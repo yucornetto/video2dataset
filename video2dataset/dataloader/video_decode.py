@@ -163,7 +163,9 @@ class VideoDecorder(AbstractVideoDecoder):
         else:
             additional_info.update({"fps_id": torch.Tensor([fs_id] * n_frames).long()})
             frames, start_frame, pad_start = self.get_frames(reader, n_frames, stride, scene_list=scene_list)
-        frames = frames.float().numpy()
+        # frames = frames.float().numpy()
+        frames = frames.numpy()
+        assert frames.dtype == np.uint8
 
         additional_info["original_height"] = torch.full((frames.shape[0],), fill_value=frames.shape[1]).long()
         additional_info["original_width"] = torch.full((frames.shape[0],), fill_value=frames.shape[2]).long()

@@ -147,7 +147,8 @@ class VideoResizer(PRNGMixin):
             frame = torch.from_numpy(frame)
             result.append(frame)
 
-        data[vidkey] = torch.stack(result).to(torch.float16)
+        # data[vidkey] = torch.stack(result).to(torch.float16)
+        data[vidkey] = torch.stack(result).to(torch.float32) / 255.0
         return data
 
 
