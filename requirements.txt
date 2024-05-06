@@ -7,7 +7,7 @@ pyarrow
 fsspec
 webdataset
 webvtt-py
-wandb
+# wandb
 pandas
 tqdm
 timeout-decorator
