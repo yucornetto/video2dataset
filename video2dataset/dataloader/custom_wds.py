@@ -484,6 +484,11 @@ class TorchDataWebdataset(DataPipeline, FluidInterfaceWithChangedDecode):
         :param handler: handler for handling exceptions as in webdataset
         """
         super().__init__()
+
+        shardshuffle = 10000
+        sample_shuffle = 5000
+        buffer_size = 5000
+
         self.return_always = return_always
         if isinstance(urls, (List, list)):
             pass
