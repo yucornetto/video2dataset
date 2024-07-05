@@ -485,9 +485,9 @@ class TorchDataWebdataset(DataPipeline, FluidInterfaceWithChangedDecode):
         """
         super().__init__()
 
-        shardshuffle = 2048
-        sample_shuffle = 1024
-        buffer_size = 1024
+        shardshuffle = 512 #2048
+        sample_shuffle = 256 #1024
+        buffer_size = 256 #1024
 
         self.return_always = return_always
         if isinstance(urls, (List, list)):
