@@ -56,11 +56,11 @@ class VideoDecorder(AbstractVideoDecoder):
         super().__init__()
         self.n_frames = n_frames
         self.pad_frames = pad_frames
-        print(f"fps: {fps}, {type(fps)}")
         if fps is not None and not isinstance(fps, Iterable):
             fps = [
                 fps,
             ]
+        print(f"fps: {fps}, {type(fps)}")
         if uniformly_sample:
             assert fps is None, "fps not compatible with uniformly_sample..."
         self.uniformly_sample = uniformly_sample
@@ -72,12 +72,13 @@ class VideoDecorder(AbstractVideoDecoder):
         if self.fps == "sample":
             # this means we sample fps in every iteration
             self.fs_ids = {fr: i for i, fr in enumerate(range(self.min_fps, self.max_fps + 1))}
-        elif isinstance(self.fps, list):
+        # elif isinstance(self.fps, list):
+        elif isinstance(self.fps, Iterable):
             self.fs_ids = {fr: i for i, fr in enumerate(self.fps)}
         else:
             self.fs_ids = None
             assert self.fps is None, f"invalid fps value specified: {self.fps}...."
-
+        print(f"self.fs_ids: {self.fs_ids}, {type(self.fs_ids)}")
         self.num_threads = num_threads
 
         infostring2 = ""
