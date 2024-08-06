@@ -56,6 +56,7 @@ class VideoDecorder(AbstractVideoDecoder):
         super().__init__()
         self.n_frames = n_frames
         self.pad_frames = pad_frames
+        print(f"fps: {fps}, {type(fps)}")
         if fps is not None and not isinstance(fps, Iterable):
             fps = [
                 fps,
